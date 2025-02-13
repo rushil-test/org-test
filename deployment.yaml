@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hello-cicd-app
+  labels:
+    app: hello-cicd-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: hello-cicd-app
+  template:
+    metadata:
+      labels:
+        app: hello-cicd-app
+    spec:
+      containers:
+      - name: hello-cicd-container
+        image: <your-artifactory-docker-registry>/hello-cicd-image:latest  # Replace with your Artifactory Docker registry path
+        ports:
+        - containerPort: 8080
